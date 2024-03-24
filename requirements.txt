@@ -1,1 +1,7 @@
+click
 numpy
+loguru
+redis
+msgpack
+psutil
+asyncio_atexit
