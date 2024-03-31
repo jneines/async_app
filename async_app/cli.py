@@ -14,8 +14,10 @@ import signal
 from async_app.logger import logger
 from async_app.app import AsyncApp
 from async_app.tools import process_monitor, system_monitor
-from async_app.messenger import messenger
+import async_app.messenger as app_messenger
 import async_app.state as app_state  # to make app_state.keep_running a singleton
+
+# from async_app.app_factory import async_app_options
 
 
 #
@@ -41,7 +43,7 @@ async def sleeper(sleep_for=0.5):
 async def publish_ts():
     """Publish the current timestamp."""
     ts = time.time()
-    await messenger.publish("async_app:ts", ts)
+    await app_messenger.publish("async_app:ts", ts)
 
 
 async def exceptional(max_runtime):
@@ -58,27 +60,73 @@ async def exit_task(exit_after=10):
 
 
 @click.command()
-def main(args=None):
+# @async_app_options
+def main():
     """Console script for async_app."""
 
     max_runtime = 5
 
-    app = AsyncApp("my_async_app")
+    app = AsyncApp()
     signal.signal(signal.SIGINT, app.exit)
+    task_descriptions = [
+        {
+            "kind": "periodic",
+            "function": app.task_monitor,
+            "frequency": 1,
+        },
+        {
+            "kind": "periodic",
+            "function": process_monitor,
+            "frequency": 2,
+        },
+        {
+            "kind": "periodic",
+            "function": system_monitor,
+            "frequency": 2,
+        },
+        {
+            "kind": "continuous",
+            "function": waiter,
+            "args": (2 / 10 * max_runtime,),
+        },
+        {
+            "kind": "continuous",
+            "function": waiter,
+            "args": (4 / 10 * max_runtime,),
+        },
+        {
+            "kind": "continuous",
+            "function": waiter,
+            "args": (6 / 10 * max_runtime,),
+        },
+        {
+            "kind": "continuous",
+            "function": waiter,
+            "args": (8 / 10 * max_runtime,),
+        },
+        {
+            "kind": "continuous",
+            "function": sleeper,
+        },
+        {
+            "kind": "periodical",
+            "function": publish_ts,
+            "frequency": 1,
+        },
+        {
+            "kind": "continuous",
+            "function": exceptional,
+            "args": (max_runtime,),
+        },
+        {
+            "kind": "continuous",
+            "function": exit_task,
+            "args": (max_runtime,),
+        },
+    ]
 
-    app.add_periodical(app.task_monitor, 1)
-    app.add_periodical(process_monitor, 2)
-    app.add_periodical(system_monitor, 2)
-
-    app.add_task(waiter, 2 / 10 * max_runtime)
-    app.add_task(waiter, 4 / 10 * max_runtime)
-    app.add_task(waiter, 6 / 10 * max_runtime)
-    app.add_task(waiter, 8 / 10 * max_runtime)
-
-    app.add_task(sleeper)
-    app.add_periodical(publish_ts, 1)
-    app.add_task(exceptional, max_runtime)
-    app.add_task(exit_task, max_runtime)
+    for task_description in task_descriptions:
+        app.add_task_description(task_description)
 
     return asyncio.run(app.run(), debug=True)
 

@@ -6,14 +6,23 @@ from async_app.logger import logger
 import async_app.state as app_state  # to make app_state.keep_running a singleton
 
 
-def periodical(update_frequency=1):
+def every(every):
+    return 1 / frequency
+
+
+def frequency(frequency):
+    return frequency
+
+
+def periodical(frequency=1, monitoring_cb=None):
     """A decorator to call a function periodically"""
+
+    call_every = 1 / frequency
 
     def inner_func(f):
         @wraps(f)
         async def wrapper(*args, **kwargs):
 
-            call_every = 1 / update_frequency
             f_is_async = True if asyncio.iscoroutinefunction(f) else False
             while app_state.keep_running:
                 tic = time.perf_counter()
@@ -21,6 +30,8 @@ def periodical(update_frequency=1):
                     await f(*args, **kwargs)
                 else:
                     f(*args, **kwargs)
+                if monitoring_cb:
+                    monitoring_cb()
                 toc = time.perf_counter()
 
                 sleep_for = max(0, call_every - (toc - tic))
@@ -44,9 +55,12 @@ if __name__ == "__main__":
 
     print(hello.__name__)
 
-    asyncio.run(hello("All"))
+    # asyncio.run(hello("All"))
 
     def hello2(name="You"):
         print(f"Hello {name}")
 
-    # asyncio.run(periodical(10)(hello2)("Sir"))
+    def watcher():
+        print("I'm watching you.")
+
+    asyncio.run(periodical(frequency(10), watcher)(hello2)("Sir"))

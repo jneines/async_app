@@ -5,3 +5,5 @@ redis
 msgpack
 psutil
 asyncio_atexit
+appdirs
+dateparser
