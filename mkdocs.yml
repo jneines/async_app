@@ -7,20 +7,6 @@ repo_url: https://github.com/jneines/async_app
 copyright: "Copyright &copy; 2024 - 2024 Jens Nie"
 
 theme:
-    palette:
-        - scheme: default
-          #   primary: blue
-          #   accent: indigo
-          toggle:
-              icon: material/toggle-switch-off-outline
-              name: Switch to dark mode
-        - scheme: slate
-          primary: indigo
-          accent: indigo
-          toggle:
-              icon: material/toggle-switch
-              name: Switch to light mode
-    #name: material
     name: readthedocs
     icon:
         repo: fontawesome/brands/github
@@ -80,8 +66,6 @@ nav:
     - FAQ: faq.md
     - Changelog: changelog.md
     - Report Issues: https://github.com/jneines/async_app/issues
-      #- Examples:
-      #  - examples/intro.ipynb
     - API Reference:
           - app module: app.md
           - app_factory module: app_factory.md
@@ -91,4 +75,3 @@ nav:
           - patterns module: patterns.md
           - state module: state.md
           - tools module: tools.md
-            #- common module: common.md
