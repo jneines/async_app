@@ -25,17 +25,17 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 
-[project.entry-points."console_scripts"]
-async_app = "async_app.cli:main"
+#[project.entry-points."console_scripts"]
+#async_app = "async_app.cli:main"
 
 [project.optional-dependencies]
 all = [
     "async_app[extra]",
 ]
 
-extra = [
-    "pandas",
-]
+#extra = [
+#    "pandas",
+#]
 
 
 [tool]
