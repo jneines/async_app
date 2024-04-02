@@ -1,4 +1,5 @@
-![image](images/async_app_logo.svg)
+<img src="images/async_app_logo.svg" width="400"/>
+
 # async_app
 
 
