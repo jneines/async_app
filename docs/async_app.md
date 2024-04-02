@@ -1,4 +1,4 @@
  
-# async_app module
+# app module
 
-::: async_app.async_app
+::: async_app.app
