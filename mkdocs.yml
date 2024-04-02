@@ -79,8 +79,15 @@ nav:
     - FAQ: faq.md
     - Changelog: changelog.md
     - Report Issues: https://github.com/jneines/async_app/issues
-    - Examples:
-        - examples/intro.ipynb
+      #- Examples:
+      #  - examples/intro.ipynb
     - API Reference:
-          - async_app module: async_app.md
-          - common module: common.md
+          - app module: async_app.md
+          - app_factory module: app_factory.md
+          - config module: config.md
+          - logger module: logger.md
+          - messenger module: messenger.md
+          - patterns module: patterns.md
+          - state module: state.md
+          - tools module: tools.md
+            #- common module: common.md
