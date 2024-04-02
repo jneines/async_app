@@ -1,4 +1,4 @@
-![image](https://github.com/jneines/async_app/images/async_app_logo.svg)
+![image](images/async_app_logo.svg)
 # async_app
 
 
