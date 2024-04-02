@@ -82,7 +82,7 @@ nav:
       #- Examples:
       #  - examples/intro.ipynb
     - API Reference:
-          - app module: async_app.md
+          - app module: app.md
           - app_factory module: app_factory.md
           - config module: config.md
           - logger module: logger.md

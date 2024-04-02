@@ -6,12 +6,11 @@ from pathlib import Path
 
 import appdirs
 
-from async_app.tools import get_app_name
+from async_app.tools import app_name
 from async_app.logger import logger
 
 
 def read_config():
-    app_name = get_app_name()
     logger.debug(f"{app_name=}")
     a = appdirs.AppDirs(appname=app_name)
 

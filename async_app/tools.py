@@ -43,19 +43,6 @@ async def process_monitor(
     await app_messenger.publish("async_app:app_monitor", record)
     await app_messenger.set("async_app:app_monitor", record)
 
-    # TODO: Could we refactor this for more general use somewhere?
-    #       Use functions name from inspect.currentframe().f_code.co_name
-    #       as upper for second possible variable
-    # check if we want a pretty output
-    # if any([
-    #        os.environ.get(f"{app_env_prefix}_LOG_PRETTY", False),
-    #        os.environ.get(f"{app_env_prefix}_PROCESS_MONITOR_LOG_PRETTY", False),
-    #        ]):
-    #    log_indent = 4
-
-    # func_name = get_func_name()
-    # log_indent = get_log_indent(func_name, log_pretty)
-    # logger.debug(to_message(record, log_pretty))
     logger.debug(json.dumps(record, indent=log_indent))
 
     return record
