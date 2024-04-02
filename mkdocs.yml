@@ -20,7 +20,8 @@ theme:
           toggle:
               icon: material/toggle-switch
               name: Switch to light mode
-    name: material
+    #name: material
+    name: readthedocs
     icon:
         repo: fontawesome/brands/github
     # logo: assets/logo.png
