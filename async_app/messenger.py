@@ -73,69 +73,11 @@ async def listener(namespace, callback):
                     await callback(data)
                 else:
                     callback(data)
+            else:
+                # be nice to the system
+                # TODO: make this configurable to allow adjusting the responsiveness
+                await asyncio.sleep(0.05)
 
 
 async def close_redis():
     await _r.aclose()
-
-
-"""
-
-class Messenger(object):
-    def __init__(self, engine="msgpack"):
-        self.engine = engine
-        if engine == "msgpack":
-            self.packer = msgpack.packb
-            self.unpacker = msgpack.unpackb
-        else:
-            logger.warning(
-                "The json based packer approach cannot serialize binary objects"
-            )
-            self.packer = json.dumps
-            self.unpacker = json.loads
-
-    # Note: setting adds another thread
-    async def set(self, namespace, data):
-        r = redis.Redis()
-        await r.set(namespace, self.packer(data))
-        await r.aclose()
-
-    async def get(self, namespace):
-        r = redis.Redis()
-        value = self.unpacker(await r.get(namespace))
-        await r.aclose()
-        return value
-
-    # Note: publishing adds another thread
-    async def publish(self, namespace, data):
-        r = redis.Redis()
-        await r.publish(namespace, self.packer(data))
-        await r.aclose()
-
-    async def listener(self, namespace, callback):
-        callback_is_async = True if asyncio.iscoroutinefunction(callback) else False
-
-        r = redis.Redis()
-
-        async with r.pubsub() as pubsub:
-            await pubsub.subscribe(namespace)
-
-            while app_state.keep_running:
-                message = await pubsub.get_message(ignore_subscribe_messages=True)
-                if message is not None:
-                    data = self.unpacker(message["data"])
-                    if callback_is_async:
-                        await callback(data)
-                    else:
-                        callback(data)
-                else:
-                    # be nice to the system
-                    # TODO: make this configurable to allow adjusting the responsiveness
-                    await asyncio.sleep(0.05)
-        await r.aclose()
-
-
-json_messenger = Messenger("json")
-messenger = Messenger()
-
-"""
