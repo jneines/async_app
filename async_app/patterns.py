@@ -22,7 +22,6 @@ def periodical(frequency=1, monitoring_cb=None):
     def inner_func(f):
         @wraps(f)
         async def wrapper(*args, **kwargs):
-
             f_is_async = True if asyncio.iscoroutinefunction(f) else False
             while app_state.keep_running:
                 tic = time.perf_counter()

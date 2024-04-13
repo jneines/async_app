@@ -140,7 +140,6 @@ class AsyncApp(object):
                 tasks.append(task)
 
             elif kind == "periodic":
-
                 # mandatory properties for 'periodical' tasks
                 frequency = task_description["frequency"]
 

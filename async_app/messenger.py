@@ -128,6 +128,10 @@ class Messenger(object):
                         await callback(data)
                     else:
                         callback(data)
+                else:
+                    # be nice to the system
+                    # TODO: make this configurable to allow adjusting the responsiveness
+                    await asyncio.sleep(0.05)
         await r.aclose()
 
 
