@@ -2,8 +2,6 @@ import sys
 
 from loguru import logger
 
-from async_app.tools import app_env_prefix
-
 
 def set_verbosity(ctx, option, log_level):
     logger.remove()
