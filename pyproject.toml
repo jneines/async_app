@@ -1,6 +1,6 @@
 [project]
 name = "async_app"
-version = "0.1.11"
+version = "0.1.12"
 dynamic = [
     "dependencies",
 ]
@@ -52,7 +52,7 @@ universal = true
 
 
 [tool.bumpversion]
-current_version = "0.1.11"
+current_version = "0.1.12"
 commit = true
 tag = true
 
