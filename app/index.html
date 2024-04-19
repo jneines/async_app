@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="jneines" /><link rel="canonical" href="https://jneines.github.io/async_app/app/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>app module - async_app</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/timeago.css" rel="stylesheet" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "app module";
+        var mkdocs_page_input_path = "app.md";
+        var mkdocs_page_url = "/async_app/app/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> async_app
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../faq/">FAQ</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/jneines/async_app/issues">Report Issues</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">app module</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#async_app.app">async_app.app</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#async_app.app.AsyncApp">AsyncApp</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#async_app.app.AsyncApp.add_task_description">add_task_description()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#async_app.app.AsyncApp.create_tasks">create_tasks()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#async_app.app.AsyncApp.exit">exit()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#async_app.app.AsyncApp.run_tasks">run_tasks()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#async_app.app.AsyncApp.task_monitor">task_monitor()</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../app_factory/">app_factory module</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../config/">config module</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../logger/">logger module</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../messenger/">messenger module</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../patterns/">patterns module</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../state/">state module</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tools/">tools module</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">async_app</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+      <li class="breadcrumb-item active">app module</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/jneines/async_app/edit/master/docs/app.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="app-module">app module<a class="headerlink" href="#app-module" title="Permanent link">&para;</a></h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="async_app.app"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="async_app.app.AsyncApp" class="doc doc-heading">
+        <code>
+AsyncApp        </code>
+
+
+
+<a href="#async_app.app.AsyncApp" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+
+        <details class="quote">
+          <summary>Source code in <code>async_app/app.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AsyncApp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">app_name</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initializing AsyncApp </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;My kwargs: </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;init&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;continuous&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;periodic&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;cleanup&quot;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">periodicals</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing_maxlen</span> <span class="o">=</span> <span class="mi">21</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_default_options</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">process_default_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Processing default async_app options.&quot;</span><span class="p">)</span>
+        <span class="n">monitor_mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;process_monitoring_frequency&quot;</span><span class="p">:</span> <span class="n">process_monitor</span><span class="p">,</span>
+            <span class="s2">&quot;system_monitoring_frequency&quot;</span><span class="p">:</span> <span class="n">system_monitor</span><span class="p">,</span>
+            <span class="s2">&quot;task_monitoring_frequency&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_monitor</span><span class="p">,</span>
+            <span class="s2">&quot;periodicals_monitoring_frequency&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_monitor</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">monitoring_function</span> <span class="ow">in</span> <span class="n">monitor_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># if the async_app_options are not used, the expected values might not have been set.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">continue</span>
+
+            <span class="n">monitoring_frequency</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">monitoring_frequency</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">task_description</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;periodic&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">monitoring_function</span><span class="p">,</span>
+                    <span class="s2">&quot;frequency&quot;</span><span class="p">:</span> <span class="n">monitoring_frequency</span><span class="p">,</span>
+                <span class="p">}</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add_task_description</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_monitoring_ts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uid</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">add_task_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_description</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a task to todo list including args and kwargs.&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Adding new task with </span><span class="si">{</span><span class="n">task_description</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">]</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+        <span class="c1"># normalize task descriptions. Make sure expected properties exist</span>
+        <span class="c1"># re-write task kinds</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;init&quot;</span><span class="p">,</span> <span class="s2">&quot;initialize&quot;</span><span class="p">):</span>
+            <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="s2">&quot;continuously&quot;</span><span class="p">):</span>
+            <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;continuous&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;continuous&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;periodic&quot;</span><span class="p">,</span> <span class="s2">&quot;periodical&quot;</span><span class="p">,</span> <span class="s2">&quot;periodically&quot;</span><span class="p">):</span>
+            <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;periodic&quot;</span>
+
+            <span class="k">if</span> <span class="s2">&quot;call_every&quot;</span> <span class="ow">in</span> <span class="n">task_description</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;frequency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;call_every&quot;</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;periodic&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;cleanup&quot;</span><span class="p">,</span> <span class="s2">&quot;teardown&quot;</span><span class="p">):</span>
+            <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cleanup&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;cleanup&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown task kind &#39;</span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2">&#39; detected. Not adding task.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">create_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize tasks of kind &#39;kind&#39;.&quot;&quot;&quot;</span>
+        <span class="c1"># filter for relevant tasks</span>
+        <span class="n">task_descriptions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">task_descriptions</span><span class="p">)</span>
+
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">task_description</span> <span class="ow">in</span> <span class="n">task_descriptions</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating asyncio task for </span><span class="si">{</span><span class="n">task_description</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="c1"># mandatory properties for &#39;continuous&#39; and &#39;periodical&#39; tasks</span>
+            <span class="n">kind</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span>
+            <span class="n">function</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">]</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+            <span class="n">uid</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span>
+
+            <span class="c1"># optional properties</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="n">task_description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="p">())</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="n">task_description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kwargs&quot;</span><span class="p">,</span> <span class="p">{})</span>
+
+            <span class="c1"># derived properties</span>
+            <span class="n">f_is_async</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;init&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">f_is_async</span><span class="p">:</span>
+                    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                        <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span>
+                    <span class="p">)</span>
+                <span class="c1"># self.model[&quot;init&quot;][&quot;tasks&quot;].append(task)</span>
+                <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;continuous&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">f_is_async</span><span class="p">:</span>
+                    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                        <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span>
+                    <span class="p">)</span>
+                <span class="c1"># self.model[&quot;main&quot;][&quot;tasks&quot;].append(task)</span>
+                <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;periodic&quot;</span><span class="p">:</span>
+                <span class="c1"># mandatory properties for &#39;periodical&#39; tasks</span>
+                <span class="n">frequency</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;frequency&quot;</span><span class="p">]</span>
+
+                <span class="c1"># optional properties for &#39;periodical&#39; tasks</span>
+                <span class="n">monitor</span> <span class="o">=</span> <span class="n">task_description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">monitor</span><span class="p">:</span>
+                    <span class="c1"># add callback to monitor performance</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span>
+                        <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing_maxlen</span><span class="p">,</span>
+                        <span class="n">maxlen</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing_maxlen</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">monitoring_callback</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">add_monitoring_ts</span><span class="p">,</span> <span class="n">uid</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">monitoring_callback</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                    <span class="n">periodical</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">monitoring_callback</span><span class="p">)(</span><span class="n">function</span><span class="p">)(</span>
+                        <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                    <span class="p">),</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+                <span class="c1"># self.model[&quot;main&quot;][&quot;tasks&quot;].append(task)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">periodicals</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;cleanup&quot;</span><span class="p">:</span>
+                <span class="n">cleanup_function</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">asyncio_atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">cleanup_function</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># will never be reached</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Unknown task kind detected: </span><span class="si">{</span><span class="n">kind</span><span class="si">=}</span><span class="s2">. Task will not be executed!&quot;</span>
+                <span class="p">)</span>
+
+        <span class="c1"># extend self.tasks for the task monitor to work properly</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tasks</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">run_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run tasks of kind &#39;kind&#39;.&quot;&quot;&quot;</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing tasks&quot;</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">coro</span> <span class="ow">in</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">await</span> <span class="n">coro</span>
+                    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;completed&quot;</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;failed&quot;</span>
+                <span class="k">finally</span><span class="p">:</span>
+                    <span class="n">task_name</span> <span class="o">=</span> <span class="n">coro</span><span class="o">.</span><span class="vm">__name__</span>
+                    <span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s2"> was cancelled&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># make sure to initialize cleanup tasks first</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_tasks</span><span class="p">(</span><span class="s2">&quot;cleanup&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Next would be init tasks run first</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_tasks</span><span class="p">(</span><span class="s2">&quot;init&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_tasks</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+
+        <span class="c1"># only after that run the main tasks</span>
+        <span class="n">continuous_tasks</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_tasks</span><span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">)</span>
+        <span class="n">periodic_tasks</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_tasks</span><span class="p">(</span><span class="s2">&quot;periodic&quot;</span><span class="p">)</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_tasks</span><span class="p">(</span><span class="n">continuous_tasks</span> <span class="o">+</span> <span class="n">periodic_tasks</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;All work is done. Here&#39;s the outcome&quot;</span><span class="p">)</span>
+        <span class="c1"># logger.info(f&quot;Results: {json.dumps(self.results, indent=log_indent)}&quot;)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">task</span><span class="o">.</span><span class="n">get_name</span><span class="p">(),</span>
+                <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s2">&quot;exception&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># In case of a manual exit, before anything has been completed, neither an exception nor a result has been set</span>
+                <span class="c1"># querying these will lead to an exception ...</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="o">.</span><span class="n">exception</span><span class="p">():</span>
+                    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">result</span><span class="p">[</span><span class="s2">&quot;exception&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">exception</span><span class="p">())</span>
+            <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">InvalidStateError</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> could not be queried for results or exceptions.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Results: </span><span class="si">{</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span><span class="w"> </span><span class="n">indent</span><span class="o">=</span><span class="n">log_indent</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">task_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A tasks monitor.&quot;&quot;&quot;</span>
+        <span class="n">tasks_running</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tasks_done</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tasks_failed</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">:</span>
+            <span class="n">task_name</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">exception</span><span class="p">():</span>
+                    <span class="n">tasks_failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">tasks_done</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tasks_running</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+
+        <span class="n">record</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;running&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks_running</span><span class="p">),</span>
+                <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">tasks_running</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;done&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks_done</span><span class="p">),</span>
+                <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">tasks_done</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks_failed</span><span class="p">),</span>
+                <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">tasks_failed</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+        <span class="k">await</span> <span class="n">app_messenger</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">:task_monitor&quot;</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">app_messenger</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">:task_monitor&quot;</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">periodicals_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">record</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">_uuid</span><span class="p">,</span> <span class="n">periodical_timing</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">periodical_timing</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">task_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicals</span><span class="p">[</span><span class="n">_uuid</span><span class="p">]</span>
+            <span class="n">record</span><span class="p">[</span><span class="n">task_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">log_indent</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exit hook.&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Exit requested. GoodBye&quot;</span><span class="p">)</span>
+        <span class="n">app_state</span><span class="o">.</span><span class="n">keep_running</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="async_app.app.AsyncApp.add_task_description" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">add_task_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_description</span><span class="p">)</span></code>
+
+
+<a href="#async_app.app.AsyncApp.add_task_description" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Add a task to todo list including args and kwargs.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>async_app/app.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">add_task_description</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_description</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a task to todo list including args and kwargs.&quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Adding new task with </span><span class="si">{</span><span class="n">task_description</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">]</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+
+    <span class="c1"># normalize task descriptions. Make sure expected properties exist</span>
+    <span class="c1"># re-write task kinds</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;init&quot;</span><span class="p">,</span> <span class="s2">&quot;initialize&quot;</span><span class="p">):</span>
+        <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;init&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;init&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="s2">&quot;continuously&quot;</span><span class="p">):</span>
+        <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;continuous&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;continuous&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;periodic&quot;</span><span class="p">,</span> <span class="s2">&quot;periodical&quot;</span><span class="p">,</span> <span class="s2">&quot;periodically&quot;</span><span class="p">):</span>
+        <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;periodic&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;call_every&quot;</span> <span class="ow">in</span> <span class="n">task_description</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;frequency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;call_every&quot;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;periodic&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">kind</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;cleanup&quot;</span><span class="p">,</span> <span class="s2">&quot;teardown&quot;</span><span class="p">):</span>
+        <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;cleanup&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="s2">&quot;cleanup&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown task kind &#39;</span><span class="si">{</span><span class="n">kind</span><span class="si">}</span><span class="s2">&#39; detected. Not adding task.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="async_app.app.AsyncApp.create_tasks" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">create_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#async_app.app.AsyncApp.create_tasks" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize tasks of kind 'kind'.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>async_app/app.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">create_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kind</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize tasks of kind &#39;kind&#39;.&quot;&quot;&quot;</span>
+    <span class="c1"># filter for relevant tasks</span>
+    <span class="n">task_descriptions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task_descriptions</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">task_descriptions</span><span class="p">)</span>
+
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">task_description</span> <span class="ow">in</span> <span class="n">task_descriptions</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Creating asyncio task for </span><span class="si">{</span><span class="n">task_description</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># mandatory properties for &#39;continuous&#39; and &#39;periodical&#39; tasks</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;kind&quot;</span><span class="p">]</span>
+        <span class="n">function</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="n">uid</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;uid&quot;</span><span class="p">]</span>
+
+        <span class="c1"># optional properties</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">task_description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="p">())</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">task_description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;kwargs&quot;</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="c1"># derived properties</span>
+        <span class="n">f_is_async</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;init&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">f_is_async</span><span class="p">:</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                    <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span>
+                <span class="p">)</span>
+            <span class="c1"># self.model[&quot;init&quot;][&quot;tasks&quot;].append(task)</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;continuous&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">f_is_async</span><span class="p">:</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                    <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span>
+                <span class="p">)</span>
+            <span class="c1"># self.model[&quot;main&quot;][&quot;tasks&quot;].append(task)</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;periodic&quot;</span><span class="p">:</span>
+            <span class="c1"># mandatory properties for &#39;periodical&#39; tasks</span>
+            <span class="n">frequency</span> <span class="o">=</span> <span class="n">task_description</span><span class="p">[</span><span class="s2">&quot;frequency&quot;</span><span class="p">]</span>
+
+            <span class="c1"># optional properties for &#39;periodical&#39; tasks</span>
+            <span class="n">monitor</span> <span class="o">=</span> <span class="n">task_description</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;monitor&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">monitor</span><span class="p">:</span>
+                <span class="c1"># add callback to monitor performance</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span> <span class="o">=</span> <span class="n">deque</span><span class="p">(</span>
+                    <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing_maxlen</span><span class="p">,</span>
+                    <span class="n">maxlen</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">periodicals_timing_maxlen</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">monitoring_callback</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">add_monitoring_ts</span><span class="p">,</span> <span class="n">uid</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">monitoring_callback</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                <span class="n">periodical</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">monitoring_callback</span><span class="p">)(</span><span class="n">function</span><span class="p">)(</span>
+                    <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                <span class="p">),</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+            <span class="c1"># self.model[&quot;main&quot;][&quot;tasks&quot;].append(task)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">periodicals</span><span class="p">[</span><span class="n">uid</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">elif</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;cleanup&quot;</span><span class="p">:</span>
+            <span class="n">cleanup_function</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">asyncio_atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">cleanup_function</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># will never be reached</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Unknown task kind detected: </span><span class="si">{</span><span class="n">kind</span><span class="si">=}</span><span class="s2">. Task will not be executed!&quot;</span>
+            <span class="p">)</span>
+
+    <span class="c1"># extend self.tasks for the task monitor to work properly</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tasks</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="async_app.app.AsyncApp.exit" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></code>
+
+
+<a href="#async_app.app.AsyncApp.exit" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Exit hook.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>async_app/app.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">exit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exit hook.&quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Exit requested. GoodBye&quot;</span><span class="p">)</span>
+    <span class="n">app_state</span><span class="o">.</span><span class="n">keep_running</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="async_app.app.AsyncApp.run_tasks" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">run_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#async_app.app.AsyncApp.run_tasks" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Run tasks of kind 'kind'.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>async_app/app.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">run_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tasks</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run tasks of kind &#39;kind&#39;.&quot;&quot;&quot;</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing tasks&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">coro</span> <span class="ow">in</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">tasks</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">coro</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;completed&quot;</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;failed&quot;</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">task_name</span> <span class="o">=</span> <span class="n">coro</span><span class="o">.</span><span class="vm">__name__</span>
+                <span class="n">now</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">CancelledError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task </span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s2"> was cancelled&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="async_app.app.AsyncApp.task_monitor" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">task_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-async"><code>async</code></small>
+  </span>
+
+<a href="#async_app.app.AsyncApp.task_monitor" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A tasks monitor.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>async_app/app.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">task_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A tasks monitor.&quot;&quot;&quot;</span>
+    <span class="n">tasks_running</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tasks_done</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tasks_failed</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">:</span>
+        <span class="n">task_name</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">done</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">exception</span><span class="p">():</span>
+                <span class="n">tasks_failed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tasks_done</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tasks_running</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_name</span><span class="p">)</span>
+
+    <span class="n">record</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;running&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks_running</span><span class="p">),</span>
+            <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">tasks_running</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;done&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks_done</span><span class="p">),</span>
+            <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">tasks_done</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;failed&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tasks_failed</span><span class="p">),</span>
+            <span class="s2">&quot;tasks&quot;</span><span class="p">:</span> <span class="n">tasks_failed</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="k">await</span> <span class="n">app_messenger</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">:task_monitor&quot;</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">app_messenger</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">app_name</span><span class="si">}</span><span class="s2">:task_monitor&quot;</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../changelog/" class="btn btn-neutral float-left" title="Changelog"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../app_factory/" class="btn btn-neutral float-right" title="app_factory module">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Copyright &copy; 2024 - 2024 Jens Nie</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/jneines/async_app" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../changelog/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../app_factory/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../js/timeago.min.js"></script>
+      <script src="../js/timeago_mkdocs_material.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
